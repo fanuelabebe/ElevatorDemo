@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements KeyPadDialog.Dial
     TextView currentStackDownTextView;
     TextView maintenanceCountTextView;
     int maintenanceCount = 0;
-    int maintenanceMax = 10;
+    int maintenanceMax = 30;
     boolean isMoving = false;
     KeyPadDialog keyPadDialog;
 
@@ -380,6 +380,7 @@ public class MainActivity extends AppCompatActivity implements KeyPadDialog.Dial
         }
     }
     public void doMaintenance(boolean isBroken){
+        dismissKeyPad();
         if(isBroken){
             saveElevatorLog(ELEVATOR_BROKEN_STATUS);
             dismissKeyPad();
@@ -395,6 +396,7 @@ public class MainActivity extends AppCompatActivity implements KeyPadDialog.Dial
     public void OnRepairClick(View v){
         doMaintenance(false);
     }
+
     public void waitForKeyPadResponse(boolean isGoingUp){
         int timeoutCount = 0;
         isMoving = false;
